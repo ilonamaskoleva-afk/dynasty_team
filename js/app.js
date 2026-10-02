@@ -3,36 +3,36 @@
     tatarstan: {
       name: "Татарстан",
       desc: "Земля орнаментов, преданий и древних символов",
-      image: "./images/93028e24-5412-458a-b96e-45420039c435.webp",
+      image: "./images/tatarstan_kazan.webp",
       found: "2 артефакта открыто",
       blurb: "Татарская культура — это мир геометрических орнаментов, где каждый узор несет смысл. Резьба по дереву, вышивка, керамика. Шурале — лесной дух, охраняющий границы между миром людей и природы.",
       artifact: {
         title: "Татарский орнамент",
         desc: "Древний язык символов",
-        image: "./images/93028e24-5412-458a-b96e-45420039c435.webp"
+        image: "./images/tatarstan_kazan.webp"
       },
       myth: {
         name: "Шурале",
         sub: "Лесной дух татарского фольклора",
-        image: "./images/93028e24-5412-458a-b96e-45420039c435.webp"
+        image: "./images/tatar_shurale.jpg"
       },
       museum: "Музей изобразительных искусств Республики Татарстан"
     },
     yakutia: {
       name: "Якутия",
       desc: "Северные эпосы, шаманские символы и морозы легенд",
-      image: "./images/yakutia_pattern.png",
+      image: "./images/v651_124.png",
       found: "1 артефакт открыт",
       blurb: "Якутия — край вечной мерзлоты и огромного неба. Олонхо — якутский эпос, одна из самых длинных в мире. Узоры украшают одежду, коней, жилища. Нюргун Боотур — герой, рожденный из льда и огня.",
       artifact: {
         title: "Якутский узор Олонхо",
         desc: "Пути героев в ледяном царстве",
-        image: "./images/yakutia_pattern.png"
+        image: "./images/yakutia_artifact.jpg"
       },
       myth: {
         name: "Нюргун Боотур",
         sub: "Герой якутского эпоса",
-        image: "./images/yakutia_hero.jpg"
+        image: "./images/yakutia_myth.jpg"
       },
       museum: "Музей истории Якутии"
     },
@@ -45,48 +45,48 @@
       artifact: {
         title: "Архангельская вышивка",
         desc: "Красная нить истории",
-        image: "./images/pomorye_embroidery.png"
+        image: "./images/v666_45.png"
       },
       myth: {
         name: "Сирин",
         sub: "Птица радости поморских морей",
-        image: "./images/pomorye_sirin.jpg"
+        image: "./images/pomorye_myth.jpg"
       },
       museum: "Архангельский краеведческий музей"
     },
     kazakhstan: {
       name: "Казахстан",
       desc: "Степные узоры, юрты и кочевая мудрость",
-      image: "./images/v651_128.png",
+      image: "./images/kazakhstan_artifact.jpg",
       found: "След ещё не найден",
       blurb: "Казахстан — бесконечные степи и кочевая культура. Казахские орнаменты (гилем) украшают ковры, одежду, предметы быта. Каждый элемент имеет название: рог барана, верблюжий след, звезда. Юрта — не просто жилище, а отражение космоса.",
       artifact: {
         title: "Казахский килем",
         desc: "Ковер степной мудрости",
-        image: "./images/kazakhstan_carpet.png"
+        image: "./images/kazakhstan_artifact.jpg"
       },
       myth: {
         name: "Алдар-Косе",
         sub: "Хитрец из казахских сказок",
-        image: "./images/kazakhstan_aldarkose.jpg"
+        image: "./images/kazakhstan_myth.jpg"
       },
       museum: "Национальный музей Республики Казахстан"
     },
     uzbekistan: {
       name: "Узбекистан",
       desc: "Голубые купола, керамика и шёлковый путь",
-      image: "./images/93028e24-5412-458a-b96e-45420039c435.webpf_aW1nLmdlbGlvcGhvdG8uY29tL2themFuLzAzX2themFuLmpwZz9fX2lkPTE0ODM4Nw==.jpeg",
+      image: "./images/uzbekistan_landmark.jpg",
       found: "След ещё не найден",
       blurb: "Узбекистан — страна торговых путей и голубых дворцов. Керамика Рипы, расписанная геометрическими узорами, славится по всему миру. Синий цвет (от лазурита) символизирует небо и вечность. Узбекский орнамент — это мир, переданный через краску и глину.",
       artifact: {
         title: "Узбекская керамика",
         desc: "Голубой путь через века",
-        image: "./images/93028e24-5412-458a-b96e-45420039c435.webpf_aW1nLmdlbGlvcGhvdG8uY29tL2themFuLzAzX2themFuLmpwZz9fX2lkPTE0ODM4Nw==.jpeg"
+        image: "./images/uzbekistan_artifact.jpg"
       },
       myth: {
         name: "Хумай",
         sub: "Волшебная птица из узбекского фольклора",
-        image: "./images/93028e24-5412-458a-b96e-45420039c435.webpf_aW1nLmdlbGlvcGhvdG8uY29tL2themFuLzAzX2themFuLmpwZz9fX2lkPTE0ODM4Nw==.jpeg"
+        image: "./images/uzbekistan_myth.jpg"
       },
       museum: "Музей искусств Узбекистана"
     }
@@ -138,7 +138,7 @@
   function setCulture(key) {
     const data = cultures[key] || cultures.tatarstan;
     currentCulture = key;
-    
+
     const title = document.getElementById("cultureTitle");
     const name = document.getElementById("cultureName");
     const desc = document.getElementById("cultureDesc");
@@ -152,7 +152,7 @@
     const mythSub = document.getElementById("cultureMythSub");
     const mythImg = document.getElementById("cultureMythImg");
     const museumName = document.getElementById("museumName");
-    
+
     if (title) title.textContent = data.name;
     if (name) name.textContent = data.name;
     if (desc) desc.textContent = data.desc;
@@ -161,29 +161,26 @@
       hero.alt = data.name;
     }
     if (blurb) blurb.textContent = data.blurb;
-    
+
     if (artImg) artImg.src = data.artifact.image;
     if (artLabel) artLabel.textContent = "Ты нашел след";
     if (artTitle) artTitle.textContent = data.artifact.title;
     if (artText) artText.textContent = data.artifact.desc;
-    
+
     if (mythTitle) mythTitle.textContent = data.myth.name;
     if (mythSub) mythSub.textContent = data.myth.sub;
     if (mythImg) mythImg.src = data.myth.image;
-    
+
     if (museumName) museumName.textContent = data.museum;
-    
     updateMythTexts(key);
   }
 
   function updateMythTexts(culture) {
     const texts = mythTexts[culture];
     if (!texts) return;
-    
     const mythBody = document.getElementById("mythBody");
     const activeTab = document.querySelector(".myth-tab.is-active");
     const activeTabKey = activeTab ? activeTab.getAttribute("data-myth") : "story";
-    
     if (mythBody) {
       mythBody.innerHTML = `<p>${texts[activeTabKey] || texts.story}</p>`;
     }
@@ -192,12 +189,9 @@
   function go(screen, opts = {}) {
     const target = app.querySelector(`[data-screen="${screen}"]`);
     if (!target) return;
-
     if (opts.culture) setCulture(opts.culture);
-
     app.querySelectorAll(".screen.active").forEach((s) => s.classList.remove("active"));
     target.classList.add("active");
-
     const scroll = target.querySelector(".scroll");
     if (scroll) scroll.scrollTop = 0;
 
@@ -220,29 +214,23 @@
     }
   }
 
-  // Navigation via data-go
   app.addEventListener("click", (e) => {
     const goBtn = e.target.closest("[data-go]");
     if (!goBtn) return;
-
     const screen = goBtn.getAttribute("data-go");
     const cultureBtn = goBtn.closest("[data-culture]");
     const opts = {};
     if (cultureBtn) opts.culture = cultureBtn.getAttribute("data-culture");
-
     if (goBtn.id === "mapPopupGo") opts.culture = currentCulture;
-
     go(screen, opts);
   });
 
-  // Toast triggers
   app.addEventListener("click", (e) => {
     const t = e.target.closest("[data-toast]");
     if (!t) return;
     showToast(t.getAttribute("data-toast"));
   });
 
-  // Collect artifact
   app.addEventListener("click", (e) => {
     const collect = e.target.closest("[data-collect]");
     if (!collect) return;
@@ -257,7 +245,6 @@
     setTimeout(() => go("collection"), 700);
   });
 
-  // Map pins
   const mapPopup = document.getElementById("mapPopup");
   app.addEventListener("click", (e) => {
     const pin = e.target.closest(".pin");
@@ -273,13 +260,11 @@
     mapPopup.hidden = false;
   });
 
-  // Close popup when clicking map bg
   document.querySelector(".map-stage__bg")?.addEventListener("click", () => {
     if (mapPopup) mapPopup.hidden = true;
     document.querySelectorAll(".pin").forEach((p) => p.classList.remove("is-open"));
   });
 
-  // Myth tabs
   document.getElementById("mythTabs")?.addEventListener("click", (e) => {
     const tab = e.target.closest(".myth-tab");
     if (!tab) return;
@@ -290,7 +275,6 @@
     document.getElementById("mythBody").innerHTML = `<p>${texts[key] || texts.story}</p>`;
   });
 
-  // Folklore tabs
   document.getElementById("folkTabs")?.addEventListener("click", (e) => {
     const tab = e.target.closest(".tab");
     if (!tab) return;
@@ -304,7 +288,6 @@
     showToast(labels[tab.getAttribute("data-tab")] || "Раздел открыт");
   });
 
-  // Create workshop
   document.getElementById("createActions")?.addEventListener("click", (e) => {
     const card = e.target.closest(".format");
     if (!card) return;
@@ -332,15 +315,9 @@
   };
 
   const storyTemplates = {
-    postcard: (motifs, style, idea) =>
-      idea ||
-      `Ты собрал ${motifs.join(", ").toLowerCase()} в формате открытки. В стиле «${style}» они звучат как короткое пожелание: бережи дом, помни корни, носи в сердце свет предков. Можно отправить близким.`,
-    revive: (motifs, style, idea) =>
-      idea ||
-      `Сцена ожила: ${motifs.join(" + ")}. В стиле «${style}» прошлое не музейная витрина, а живой момент — ты внутри преданий, видишь людей, слышишь песни, ощущаешь дыхание веков.`,
-    visual: (motifs, style, idea) =>
-      idea ||
-      `Новый визуальный код из ${motifs.join(", ").toLowerCase()}. Стиль «${style}» связывает разные культуры в один узнаваемый знак. Каждый штрих несет смысл, каждый цвет — историю.`,
+    postcard: (motifs, style, idea) => idea || `Ты собрал ${motifs.join(", ").toLowerCase()} в формате открытки. В стиле «${style}» они звучат как короткое пожелание: бережи дом, помни корни, носи в сердце свет предков. Можно отправить близким.`,
+    revive: (motifs, style, idea) => idea || `Сцена ожила: ${motifs.join(" + ")}. В стиле «${style}» прошлое не музейная витрина, а живой момент — ты внутри преданий, видишь людей, слышишь песни, ощущаешь дыхание веков.`,
+    visual: (motifs, style, idea) => idea || `Новый визуальный код из ${motifs.join(", ").toLowerCase()}. Стиль «${style}» связывает разные культуры в один узнаваемый знак. Каждый штрих несет смысл, каждый цвет — историю.`
   };
 
   document.getElementById("generateBtn")?.addEventListener("click", () => {
@@ -348,25 +325,17 @@
     const action = document.querySelector(".format.is-selected")?.getAttribute("data-action") || "postcard";
     const style = document.querySelector(".style.is-selected")?.textContent || "Древний";
     const motifs = [...document.querySelectorAll(".chip.is-selected")].map((c) => c.textContent);
-
     if (motifs.length < 2) {
       showToast("Выбери хотя бы 2 следа");
       return;
     }
-
     const result = document.getElementById("genResult");
     const tag = document.getElementById("genTag");
     const title = document.getElementById("genTitle");
     const text = document.getElementById("genText");
     const motifsEl = document.getElementById("genMotifs");
-
     tag.textContent = `${actionTitles[action]} · ${style}`;
-    title.textContent =
-      action === "postcard"
-        ? "Открытка, которую можно отправить"
-        : action === "revive"
-          ? "Сцена, которую ты оживил"
-          : "Узор, который ты собрал";
+    title.textContent = action === "postcard" ? "Открытка, которую можно отправить" : action === "revive" ? "Сцена, которую ты оживил" : "Узор, который ты собрал";
     text.textContent = storyTemplates[action](motifs, style, prompt);
     motifsEl.innerHTML = motifs.map((m) => `<span>${m}</span>`).join("");
     result.hidden = false;
@@ -384,6 +353,5 @@
     setTimeout(() => go("artifact"), 800);
   });
 
-  // Start
   go("splash");
 })();
