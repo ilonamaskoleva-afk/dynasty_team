@@ -1,357 +1,256 @@
-(() => {
-  const cultures = {
+document.addEventListener('DOMContentLoaded', () => {
+  const screens = Array.from(document.querySelectorAll('.screen'));
+  const toast = document.getElementById('toast');
+  const mapPopup = document.getElementById('mapPopup');
+
+  const cultureData = {
     tatarstan: {
-      name: "Татарстан",
-      desc: "Земля орнаментов, преданий и древних символов",
-      image: "./images/tatarstan_kazan.webp",
-      found: "2 артефакта открыто",
-      blurb: "Татарская культура — это мир геометрических орнаментов, где каждый узор несет смысл. Резьба по дереву, вышивка, керамика. Шурале — лесной дух, охраняющий границы между миром людей и природы.",
-      artifact: {
-        title: "Татарский орнамент",
-        desc: "Древний язык символов",
-        image: "./images/tatarstan_kazan.webp"
-      },
-      myth: {
-        name: "Шурале",
-        sub: "Лесной дух татарского фольклора",
-        image: "./images/tatar_shurale.jpg"
-      },
-      museum: "Музей изобразительных искусств Республики Татарстан"
+      name: 'Татарстан',
+      subtitle: 'Земля орнаментов, преданий и древних символов',
+      blurb: 'Татарская культура — это переплетение геометрии, музыки, духовных учений и живой памяти о земле.',
+      folk: ['Шурале', 'Су анасы', 'Камыр-батыр'],
+      idea: 'Татарский орнамент',
+      text: 'Старинный символический язык, передающий память о земле, доме и ритуале.',
+      mythTitle: 'Шурале',
+      mythSub: 'Лесной дух татарского фольклора',
+      artImg: './images/93028e24-5412-458a-b96e-45420039c435.webp',
+      mythImg: './images/tatar_shurale.jpg',
+      heroImg: './images/93028e24-5412-458a-b96e-45420039c435.webp'
     },
     yakutia: {
-      name: "Якутия",
-      desc: "Северные эпосы, шаманские символы и морозы легенд",
-      image: "./images/v651_124.png",
-      found: "1 артефакт открыт",
-      blurb: "Якутия — край вечной мерзлоты и огромного неба. Олонхо — якутский эпос, одна из самых длинных в мире. Узоры украшают одежду, коней, жилища. Нюргун Боотур — герой, рожденный из льда и огня.",
-      artifact: {
-        title: "Якутский узор Олонхо",
-        desc: "Пути героев в ледяном царстве",
-        image: "./images/yakutia_artifact.jpg"
-      },
-      myth: {
-        name: "Нюргун Боотур",
-        sub: "Герой якутского эпоса",
-        image: "./images/yakutia_myth.jpg"
-      },
-      museum: "Музей истории Якутии"
+      name: 'Якутия',
+      subtitle: 'Лес, небо и древний эпос',
+      blurb: 'Якутская культура хранит особую связь с землёй, рекой и звёздным календарём.',
+      folk: ['Нюргун Боотур', 'Олонхо', 'Небо и олень'],
+      idea: 'Северный символ',
+      text: 'Артефакт из северного мира, связанный с эпосом, ритуалом и природой.',
+      mythTitle: 'Нюргун Боотур',
+      mythSub: 'Герой якутского эпоса',
+      artImg: './images/yakutia_artifact.jpg',
+      mythImg: './images/yakutia_myth.jpg',
+      heroImg: './images/yakutia_artifact.jpg'
     },
     pomorye: {
-      name: "Поморье",
-      desc: "Вышивка, мореходство и северные обряды",
-      image: "./images/v651_126.png",
-      found: "1 артефакт открыт",
-      blurb: "Поморье — царство белых ночей и вышивки. Архангельская вышивка известна своими геометрическими рисунками красной нитью. Морские обряды, скань, традиционные ремесла. Лебедь, олень, растительные орнаменты символизируют плодородие и защиту.",
-      artifact: {
-        title: "Архангельская вышивка",
-        desc: "Красная нить истории",
-        image: "./images/v666_45.png"
-      },
-      myth: {
-        name: "Сирин",
-        sub: "Птица радости поморских морей",
-        image: "./images/pomorye_myth.jpg"
-      },
-      museum: "Архангельский краеведческий музей"
+      name: 'Поморье',
+      subtitle: 'Вышивка, море и северные законы',
+      blurb: 'Поморская культура — это северная мудрость, море, хозяйство и особая красота обрядов.',
+      folk: ['Поморский узор', 'Северные истории', 'Рыболовный знак'],
+      idea: 'Северная вышивка',
+      text: 'Узор о том, как человек соотносил себя с морем, зимой и судьбой.',
+      mythTitle: 'Морской обряд',
+      mythSub: 'Поминальная и праздничная традиция Поморья',
+      artImg: './images/pomorye_myth.jpg',
+      mythImg: './images/pomorye_myth.jpg',
+      heroImg: './images/pomorye_myth.jpg'
     },
     kazakhstan: {
-      name: "Казахстан",
-      desc: "Степные узоры, юрты и кочевая мудрость",
-      image: "./images/kazakhstan_artifact.jpg",
-      found: "След ещё не найден",
-      blurb: "Казахстан — бесконечные степи и кочевая культура. Казахские орнаменты (гилем) украшают ковры, одежду, предметы быта. Каждый элемент имеет название: рог барана, верблюжий след, звезда. Юрта — не просто жилище, а отражение космоса.",
-      artifact: {
-        title: "Казахский килем",
-        desc: "Ковер степной мудрости",
-        image: "./images/kazakhstan_artifact.jpg"
-      },
-      myth: {
-        name: "Алдар-Косе",
-        sub: "Хитрец из казахских сказок",
-        image: "./images/kazakhstan_myth.jpg"
-      },
-      museum: "Национальный музей Республики Казахстан"
+      name: 'Казахстан',
+      subtitle: 'Степь, мифы и путь к свету',
+      blurb: 'Казахстанская культура включает степные мифы, символы кочевого мира и значение слова как пути.',
+      folk: ['Алдар-Косе', 'Степной эпос', 'Песни рода'],
+      idea: 'Кочевой символ',
+      text: 'Артефакт, передающий связь с историей степи, жертвами и мудростью предков.',
+      mythTitle: 'Алдар-Косе',
+      mythSub: 'Легендарный герой казахского фольклора',
+      artImg: './images/kazakhstan_artifact.jpg',
+      mythImg: './images/kazakhstan_myth.jpg',
+      heroImg: './images/kazakhstan_artifact.jpg'
     },
     uzbekistan: {
-      name: "Узбекистан",
-      desc: "Голубые купола, керамика и шёлковый путь",
-      image: "./images/uzbekistan_landmark.jpg",
-      found: "След ещё не найден",
-      blurb: "Узбекистан — страна торговых путей и голубых дворцов. Керамика Рипы, расписанная геометрическими узорами, славится по всему миру. Синий цвет (от лазурита) символизирует небо и вечность. Узбекский орнамент — это мир, переданный через краску и глину.",
-      artifact: {
-        title: "Узбекская керамика",
-        desc: "Голубой путь через века",
-        image: "./images/uzbekistan_artifact.jpg"
-      },
-      myth: {
-        name: "Хумай",
-        sub: "Волшебная птица из узбекского фольклора",
-        image: "./images/uzbekistan_myth.jpg"
-      },
-      museum: "Музей искусств Узбекистана"
+      name: 'Узбекистан',
+      subtitle: 'Шёлк, узор и памятник рождения',
+      blurb: 'Узбекистанская культура хранит богатство шёлка, ремёсел и ярких образов сказок и легенд.',
+      folk: ['Сказки о мудреце', 'Шёлковая нить', 'Герои древних дорог'],
+      idea: 'Шёлковый образ',
+      text: 'Визуальный след, где культура, ремесло и история становятся одним узором.',
+      mythTitle: 'Сказки о дороге',
+      mythSub: 'Мифологическая образность Узбекистана',
+      artImg: './images/uzbekistan_artifact.jpg',
+      mythImg: './images/uzbekistan_myth.jpg',
+      heroImg: './images/uzbekistan_artifact.jpg'
     }
   };
 
-  const mythTexts = {
-    tatarstan: {
-      story: "Шурале — хозяин леса в татарском фольклоре. Это невысокое существо, покрытое шерстью, с одним глазом на лбу. Он охраняет лес от бездумной вырубки и наказывает охотников, забывших уважение к природе. Шурале может защекотать путника до смерти, если тот нарушит лесные законы.",
-      facts: "Шурале часто изображают на вышивке и резьбе. Татарские охотники оставляли в лесу подношения — хлеб и молоко. Леший в русском фольклоре очень похож на Шурале, что говорит об общих корнях финно-угорских и тюркских культур.",
-      essence: "Суть мифа о Шурале — гармония с природой. Лес не враг, а живой организм, требующий уважения. Орнаменты, изображающие растения и животных, напоминают человеку о его месте в экосистеме."
-    },
-    yakutia: {
-      story: "Нюргун Боотур — герой якутского эпоса Олонхо, рожденный из ледяного озера. Он борется с врагами холода и тьмы, защищает народ якутов от стихий и опасностей. Его путь — это путь через испытания, где каждое препятствие закаляет дух.",
-      facts: "Олонхо декламируют в течение многих дней, передавая из поколения в поколение. Эпос включает десятки тысяч строф. Якутские узоры на одежде защищали воина в боях, являясь символами силы и мужества.",
-      essence: "Нюргун Боотур символизирует стойкость перед холодом и невзгодами. В суровом климате Якутии герой — тот, кто не сломлен морозом и темнотой, кто несет свет и тепло в ледяное сердце земли."
-    },
-    pomorye: {
-      story: "Сирин — мифическая птица в славянской мифологии, известная по поморским легендам. Она поет песни, приносящие радость и утешение. Сирин живет на краю света, в стране вечного света (вечного дня белых ночей). Её голос слышен только чистому сердцем.",
-      facts: "Сирин часто изображается на вышивке рядом с деревом жизни. Архангельская вышивка использует красную нить на белом льне — цвета огня и снега. Эти узоры передавались от матери к дочери сотни лет.",
-      essence: "Сирин символизирует духовное возвышение и утешение. В суровых условиях Поморья песня и красота — это спасение. Вышивка была не украшением, а молитвой, защитой и передачей мудрости."
-    },
-    kazakhstan: {
-      story: "Алдар-Косе — плут и мудрец из казахских сказок. Это герой не физической силы, а ума и хитрости. Он выходит победителем из невозможных ситуаций, обманывает чертей и спасает бедняков от беды. Его истории передают уроки жизни через смех.",
-      facts: "Алдар-Косе похож на такстера из других культур — перса Насреддина, русского барина. Это архетип мудреца-шута, который есть у многих народов. Казахские кочевники передавали его истории у костра, развлекая себя в долгих степных ночах.",
-      essence: "Алдар-Косе учит, что ум и характер важнее физической силы. В степной культуре, где выживание зависит от умения адаптироваться, герой-интеллектуал становится образцом мудрости и свободы."
-    },
-    uzbekistan: {
-      story: "Хумай — волшебная птица узбекского фольклора, символ матери и защиты. Её крылья спасают от бед, её пение лечит раны. Хумай появляется в самые темные моменты жизни, когда надежда почти потеряна, и дарует спасение.",
-      facts: "Хумай часто вышивается на свадебных платьях узбекских невест. Она символизирует фертильность и материнство. В персидской культуре Симург (похожее существо) тоже символизирует божественную защиту.",
-      essence: "Хумай олицетворяет материнскую любовь и божественное вмешательство. На Шелковом пути, где встречались разные культуры, образ защищающей птицы стал универсальным символом надежды."
-    }
+  const setScreen = (screenName) => {
+    screens.forEach((screen) => {
+      const isActive = screen.dataset.screen === screenName;
+      screen.classList.toggle('active', isActive);
+      screen.style.opacity = isActive ? '1' : '0';
+      screen.style.pointerEvents = isActive ? 'auto' : 'none';
+      screen.style.transform = isActive ? 'translateX(0)' : 'translateX(18px)';
+      screen.style.zIndex = isActive ? '2' : '1';
+    });
+
+    const topnavLinks = document.querySelectorAll('.topnav__link');
+    topnavLinks.forEach((link) => {
+      link.classList.toggle('is-active', link.dataset.go === screenName);
+    });
   };
 
-  const app = document.getElementById("app");
-  const toastEl = document.getElementById("toast");
-  const bottomnav = document.getElementById("bottomnav");
-  let currentCulture = "tatarstan";
-  let toastTimer = null;
+  const showToast = (message) => {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.hidden = false;
+    toast.classList.add('is-visible');
+    clearTimeout(showToast.timeoutId);
+    showToast.timeoutId = setTimeout(() => {
+      toast.classList.remove('is-visible');
+      toast.hidden = true;
+    }, 1800);
+  };
 
-  function showToast(message) {
-    toastEl.textContent = message;
-    toastEl.hidden = false;
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      toastEl.hidden = true;
-    }, 2200);
-  }
+  const applyCulture = (cultureKey) => {
+    const culture = cultureData[cultureKey];
+    if (!culture) return;
 
-  function setCulture(key) {
-    const data = cultures[key] || cultures.tatarstan;
-    currentCulture = key;
+    const cultureTitle = document.getElementById('cultureTitle');
+    const cultureName = document.getElementById('cultureName');
+    const cultureDesc = document.getElementById('cultureDesc');
+    const cultureBlurb = document.getElementById('cultureBlurb');
+    const cultureFolk = document.getElementById('cultureFolk');
+    const cultureHeroImg = document.getElementById('cultureHeroImg');
+    const cultureArtImg = document.getElementById('cultureArtImg');
+    const cultureArtLabel = document.getElementById('cultureArtLabel');
+    const cultureArtTitle = document.getElementById('cultureArtTitle');
+    const cultureArtText = document.getElementById('cultureArtText');
+    const cultureMythTitle = document.getElementById('cultureMythTitle');
+    const cultureMythSub = document.getElementById('cultureMythSub');
+    const cultureMythImg = document.getElementById('cultureMythImg');
+    const mythImg = document.getElementById('mythImg');
+    const mythName = document.getElementById('mythName');
+    const mythSub = document.getElementById('mythSub');
+    const artTitle = document.getElementById('artTitle');
+    const artText = document.getElementById('artText');
+    const artImg = document.getElementById('artImg');
 
-    const title = document.getElementById("cultureTitle");
-    const name = document.getElementById("cultureName");
-    const desc = document.getElementById("cultureDesc");
-    const hero = document.querySelector("#cultureHero img");
-    const blurb = document.getElementById("cultureBlurb");
-    const artImg = document.getElementById("cultureArtImg");
-    const artLabel = document.getElementById("cultureArtLabel");
-    const artTitle = document.getElementById("cultureArtTitle");
-    const artText = document.getElementById("cultureArtText");
-    const mythTitle = document.getElementById("cultureMythTitle");
-    const mythSub = document.getElementById("cultureMythSub");
-    const mythImg = document.getElementById("cultureMythImg");
-    const museumName = document.getElementById("museumName");
+    if (cultureTitle) cultureTitle.textContent = culture.name;
+    if (cultureName) cultureName.textContent = culture.name;
+    if (cultureDesc) cultureDesc.textContent = culture.subtitle;
+    if (cultureBlurb) cultureBlurb.textContent = culture.blurb;
+    if (cultureHeroImg) cultureHeroImg.src = culture.heroImg;
 
-    if (title) title.textContent = data.name;
-    if (name) name.textContent = data.name;
-    if (desc) desc.textContent = data.desc;
-    if (hero) {
-      hero.src = data.image;
-      hero.alt = data.name;
+    if (cultureFolk) {
+      cultureFolk.innerHTML = culture.folk.map((item) => `<span class="folk-pill">${item}</span>`).join('');
     }
-    if (blurb) blurb.textContent = data.blurb;
 
-    if (artImg) artImg.src = data.artifact.image;
-    if (artLabel) artLabel.textContent = "Ты нашел след";
-    if (artTitle) artTitle.textContent = data.artifact.title;
-    if (artText) artText.textContent = data.artifact.desc;
+    if (cultureArtImg) cultureArtImg.src = culture.artImg;
+    if (cultureArtLabel) cultureArtLabel.textContent = 'Ты нашел след';
+    if (cultureArtTitle) cultureArtTitle.textContent = culture.idea;
+    if (cultureArtText) cultureArtText.textContent = culture.text;
 
-    if (mythTitle) mythTitle.textContent = data.myth.name;
-    if (mythSub) mythSub.textContent = data.myth.sub;
-    if (mythImg) mythImg.src = data.myth.image;
+    if (cultureMythTitle) cultureMythTitle.textContent = culture.mythTitle;
+    if (cultureMythSub) cultureMythSub.textContent = culture.mythSub;
+    if (cultureMythImg) cultureMythImg.src = culture.mythImg;
 
-    if (museumName) museumName.textContent = data.museum;
-    updateMythTexts(key);
-  }
+    if (mythImg) mythImg.src = culture.mythImg;
+    if (mythName) mythName.textContent = culture.mythTitle;
+    if (mythSub) mythSub.textContent = culture.mythSub;
 
-  function updateMythTexts(culture) {
-    const texts = mythTexts[culture];
-    if (!texts) return;
-    const mythBody = document.getElementById("mythBody");
-    const activeTab = document.querySelector(".myth-tab.is-active");
-    const activeTabKey = activeTab ? activeTab.getAttribute("data-myth") : "story";
-    if (mythBody) {
-      mythBody.innerHTML = `<p>${texts[activeTabKey] || texts.story}</p>`;
+    if (artTitle) artTitle.textContent = culture.idea;
+    if (artText) artText.textContent = culture.text;
+    if (artImg) artImg.src = culture.artImg;
+  };
+
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-go]');
+    if (trigger) {
+      const nextScreen = trigger.dataset.go;
+      if (nextScreen) {
+        event.preventDefault();
+        if (trigger.dataset.culture) {
+          applyCulture(trigger.dataset.culture);
+        }
+        setScreen(nextScreen);
+      }
     }
+
+    const pin = event.target.closest('.pin');
+    if (pin && pin.dataset.pin) {
+      const pinCulture = pin.dataset.pin;
+      applyCulture(pinCulture);
+      if (mapPopup) {
+        const popupTitle = document.getElementById('mapPopupTitle');
+        const popupText = document.getElementById('mapPopupText');
+        if (popupTitle) popupTitle.textContent = cultureData[pinCulture]?.name || 'Культура';
+        if (popupText) popupText.textContent = '2 артефакта открыто';
+        mapPopup.hidden = false;
+      }
+    }
+
+    const toastBtn = event.target.closest('[data-toast]');
+    if (toastBtn) {
+      const text = toastBtn.dataset.toast || 'Готово';
+      showToast(text);
+    }
+
+    const collectBtn = event.target.closest('[data-collect]');
+    if (collectBtn) {
+      event.preventDefault();
+      showToast('Артефакт добавлен в коллекцию');
+    }
+
+    const tabButton = event.target.closest('.tab');
+    if (tabButton) {
+      document.querySelectorAll('.tab').forEach((tab) => tab.classList.toggle('is-active', tab === tabButton));
+    }
+
+    const mythTabButton = event.target.closest('.myth-tab');
+    if (mythTabButton) {
+      document.querySelectorAll('.myth-tab').forEach((tab) => tab.classList.toggle('is-active', tab === mythTabButton));
+      const mythType = mythTabButton.dataset.myth || 'story';
+      const mythBody = document.getElementById('mythBody');
+      if (mythBody) {
+        const texts = {
+          story: 'Шурале — хозяин леса в татарском фольклоре. Это существо хранит тайны дерева, воды и ритуального пространства.',
+          facts: 'В татарских преданиях Шурале связан с лесом, скрытыми силами природы и запретами на бесчинство в чужой земле.',
+          essence: 'Он символизирует уважение к природе, границы, традицию и чувство предосторожности в лесу.'
+        };
+        mythBody.innerHTML = `<p>${texts[mythType] || texts.story}</p>`;
+      }
+    }
+  });
+
+  const findBtn = document.getElementById('findBtn');
+  const artifactSearch = document.getElementById('artifactSearch');
+  if (findBtn && artifactSearch) {
+    findBtn.addEventListener('click', () => {
+      const value = artifactSearch.value.trim();
+      if (!value) {
+        showToast('Введите название');
+        return;
+      }
+      showToast(`Найдено: ${value}`);
+    });
   }
 
-  function go(screen, opts = {}) {
-    const target = app.querySelector(`[data-screen="${screen}"]`);
-    if (!target) return;
-    if (opts.culture) setCulture(opts.culture);
-    app.querySelectorAll(".screen.active").forEach((s) => s.classList.remove("active"));
-    target.classList.add("active");
-    const scroll = target.querySelector(".scroll");
-    if (scroll) scroll.scrollTop = 0;
+  const defaultCulture = 'tatarstan';
+  applyCulture(defaultCulture);
+  setScreen('splash');
 
-    const mainTabs = ["home", "folklore", "map", "collection", "profile"];
-    bottomnav.classList.toggle("is-hidden", screen === "splash");
-    bottomnav.querySelectorAll(".bottomnav__item").forEach((btn) => {
-      const dest = btn.getAttribute("data-go");
-      btn.classList.toggle("is-active", dest === screen || (screen === "profile" && dest === "collection" && false));
-      if (mainTabs.includes(screen)) {
-        btn.classList.toggle("is-active", dest === screen);
+  const startBtn = document.querySelector('[data-go="home"]');
+  if (startBtn) {
+    startBtn.addEventListener('click', () => setScreen('home'));
+  }
+
+  const familyCards = document.querySelectorAll('[data-go="family"]');
+  familyCards.forEach((card) => {
+    card.addEventListener('click', () => setScreen('family'));
+  });
+
+  document.querySelectorAll('.culture-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      if (card.dataset.culture) {
+        applyCulture(card.dataset.culture);
       }
     });
+  });
 
-    document.querySelectorAll(".topnav__link").forEach((link) => {
-      link.classList.toggle("is-active", link.getAttribute("data-go") === screen);
+  document.querySelectorAll('.pin').forEach((pin) => {
+    pin.addEventListener('click', () => {
+      const selectedCulture = pin.dataset.pin;
+      if (selectedCulture) {
+        applyCulture(selectedCulture);
+      }
     });
-
-    if (screen === "culture" && opts.fromPin) {
-      showToast(`Открыт регион: ${cultures[currentCulture].name}`);
-    }
-  }
-
-  app.addEventListener("click", (e) => {
-    const goBtn = e.target.closest("[data-go]");
-    if (!goBtn) return;
-    const screen = goBtn.getAttribute("data-go");
-    const cultureBtn = goBtn.closest("[data-culture]");
-    const opts = {};
-    if (cultureBtn) opts.culture = cultureBtn.getAttribute("data-culture");
-    if (goBtn.id === "mapPopupGo") opts.culture = currentCulture;
-    go(screen, opts);
   });
-
-  app.addEventListener("click", (e) => {
-    const t = e.target.closest("[data-toast]");
-    if (!t) return;
-    showToast(t.getAttribute("data-toast"));
-  });
-
-  app.addEventListener("click", (e) => {
-    const collect = e.target.closest("[data-collect]");
-    if (!collect) return;
-    const badge = document.getElementById("confirmBadge");
-    if (badge) badge.textContent = "3/8 подтверждено!";
-    const grid = document.getElementById("collectionGrid");
-    if (grid) {
-      const locked = grid.querySelector(".c-item:not(.unlocked):not(.more)");
-      if (locked) locked.classList.add("unlocked");
-    }
-    showToast("Артефакт добавлен в коллекцию");
-    setTimeout(() => go("collection"), 700);
-  });
-
-  const mapPopup = document.getElementById("mapPopup");
-  app.addEventListener("click", (e) => {
-    const pin = e.target.closest(".pin");
-    if (!pin) return;
-    const key = pin.getAttribute("data-pin");
-    const data = cultures[key];
-    if (!data) return;
-    currentCulture = key;
-    document.querySelectorAll(".pin").forEach((p) => p.classList.remove("is-open"));
-    pin.classList.add("is-open");
-    document.getElementById("mapPopupTitle").textContent = data.name;
-    document.getElementById("mapPopupText").textContent = data.found;
-    mapPopup.hidden = false;
-  });
-
-  document.querySelector(".map-stage__bg")?.addEventListener("click", () => {
-    if (mapPopup) mapPopup.hidden = true;
-    document.querySelectorAll(".pin").forEach((p) => p.classList.remove("is-open"));
-  });
-
-  document.getElementById("mythTabs")?.addEventListener("click", (e) => {
-    const tab = e.target.closest(".myth-tab");
-    if (!tab) return;
-    document.querySelectorAll(".myth-tab").forEach((t) => t.classList.remove("is-active"));
-    tab.classList.add("is-active");
-    const key = tab.getAttribute("data-myth");
-    const texts = mythTexts[currentCulture] || mythTexts.tatarstan;
-    document.getElementById("mythBody").innerHTML = `<p>${texts[key] || texts.story}</p>`;
-  });
-
-  document.getElementById("folkTabs")?.addEventListener("click", (e) => {
-    const tab = e.target.closest(".tab");
-    if (!tab) return;
-    document.querySelectorAll("#folkTabs .tab").forEach((t) => t.classList.remove("is-active"));
-    tab.classList.add("is-active");
-    const labels = {
-      myths: "Раздел мифологии открыт",
-      stories: "Раздел рассказов открыт",
-      cartoons: "Раздел мультфильмов открыт",
-    };
-    showToast(labels[tab.getAttribute("data-tab")] || "Раздел открыт");
-  });
-
-  document.getElementById("createActions")?.addEventListener("click", (e) => {
-    const card = e.target.closest(".format");
-    if (!card) return;
-    document.querySelectorAll(".format").forEach((c) => c.classList.remove("is-selected"));
-    card.classList.add("is-selected");
-  });
-
-  document.getElementById("motifs")?.addEventListener("click", (e) => {
-    const chip = e.target.closest(".chip");
-    if (!chip) return;
-    chip.classList.toggle("is-selected");
-  });
-
-  document.getElementById("styles")?.addEventListener("click", (e) => {
-    const style = e.target.closest(".style");
-    if (!style) return;
-    document.querySelectorAll(".style").forEach((s) => s.classList.remove("is-selected"));
-    style.classList.add("is-selected");
-  });
-
-  const actionTitles = {
-    postcard: "Открытка",
-    revive: "Оживление",
-    visual: "Узор",
-  };
-
-  const storyTemplates = {
-    postcard: (motifs, style, idea) => idea || `Ты собрал ${motifs.join(", ").toLowerCase()} в формате открытки. В стиле «${style}» они звучат как короткое пожелание: бережи дом, помни корни, носи в сердце свет предков. Можно отправить близким.`,
-    revive: (motifs, style, idea) => idea || `Сцена ожила: ${motifs.join(" + ")}. В стиле «${style}» прошлое не музейная витрина, а живой момент — ты внутри преданий, видишь людей, слышишь песни, ощущаешь дыхание веков.`,
-    visual: (motifs, style, idea) => idea || `Новый визуальный код из ${motifs.join(", ").toLowerCase()}. Стиль «${style}» связывает разные культуры в один узнаваемый знак. Каждый штрих несет смысл, каждый цвет — историю.`
-  };
-
-  document.getElementById("generateBtn")?.addEventListener("click", () => {
-    const prompt = document.getElementById("genPrompt")?.value.trim();
-    const action = document.querySelector(".format.is-selected")?.getAttribute("data-action") || "postcard";
-    const style = document.querySelector(".style.is-selected")?.textContent || "Древний";
-    const motifs = [...document.querySelectorAll(".chip.is-selected")].map((c) => c.textContent);
-    if (motifs.length < 2) {
-      showToast("Выбери хотя бы 2 следа");
-      return;
-    }
-    const result = document.getElementById("genResult");
-    const tag = document.getElementById("genTag");
-    const title = document.getElementById("genTitle");
-    const text = document.getElementById("genText");
-    const motifsEl = document.getElementById("genMotifs");
-    tag.textContent = `${actionTitles[action]} · ${style}`;
-    title.textContent = action === "postcard" ? "Открытка, которую можно отправить" : action === "revive" ? "Сцена, которую ты оживил" : "Узор, который ты собрал";
-    text.textContent = storyTemplates[action](motifs, style, prompt);
-    motifsEl.innerHTML = motifs.map((m) => `<span>${m}</span>`).join("");
-    result.hidden = false;
-    result.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    showToast("История собрана");
-  });
-
-  document.getElementById("findBtn")?.addEventListener("click", () => {
-    const q = document.getElementById("artifactSearch")?.value.trim();
-    if (!q) {
-      showToast("Введите описание артефакта");
-      return;
-    }
-    showToast("Похожий след найден: Татарский орнамент");
-    setTimeout(() => go("artifact"), 800);
-  });
-
-  go("splash");
-})();
+});
