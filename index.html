@@ -40,7 +40,8 @@
           <div class="intro">
             <div>
               <h2 class="section-title">Выбери культуру</h2>
-              <p class="intro__text">Исследуй богатое наследие народов России — от архангельской вышивки до дагестанского кувшина. Каждый орнамент, каждый обряд, каждое слово — это код, который ждёт, чтобы его разгадали.</p>
+              <p class="intro__text">Исследуй богатое наследие народов России — от архангельской вышивки до дагестанского[...]
+              </p>
             </div>
             <p class="intro__aside">Каждый артефакт — ключ к культуре целого народа</p>
           </div>
@@ -229,7 +230,7 @@
       <section class="screen" data-screen="folklore">
         <header class="topbar topbar--back">
           <button class="back" data-go="home">← Назад</button>
-          <span class="topbar__title">Все культуры</span>
+          <span class="topbar__title">Фольклор народов России</span>
         </header>
         <div class="scroll">
           <div class="folk-hero">
@@ -243,6 +244,7 @@
           </div>
 
           <div id="folkPanels">
+            <!-- CARTOONS PANEL -->
             <div class="folk-panel" data-panel="cartoons">
               <div class="panel">
                 <h3>«Гора самоцветов»</h3>
@@ -268,6 +270,7 @@
               </div>
             </div>
 
+            <!-- STORIES PANEL -->
             <div class="folk-panel" data-panel="stories" hidden>
               <div class="panel">
                 <h3>Что почитать или послушать</h3>
@@ -281,6 +284,7 @@
               </div>
             </div>
 
+            <!-- HEROES PANEL -->
             <div class="folk-panel" data-panel="heroes" hidden>
               <div class="panel">
                 <h3>Персонажи и эпосы</h3>
@@ -447,7 +451,7 @@
               <div class="step__body">
                 <p class="create__label">Твоя идея</p>
                 <label class="field">
-                  <textarea id="genPrompt" rows="3" placeholder="Например: открытка для бабушки — лесной дух бережёт дом, вокруг татарский узор как оберег..."></textarea>
+                  <textarea id="genPrompt" rows="3" placeholder="Например: открытка для бабушки — лесной дух бережёт дом, вокруг татарских орнаментов..."></textarea>
                 </label>
               </div>
             </div>
@@ -498,96 +502,17 @@
 
           <div class="heritage-card">
             <div class="heritage-card__head">
-              <strong>Ваша семейная карта наследия</strong>
-              <small>9 артефактов · 4 региона</small>
+              <h3>Наследие</h3>
+              <p>Твой путь открытий</p>
             </div>
-            <img src="./images/v785_201.png" alt="Карта наследия" />
-            <button class="btn btn--primary full" data-go="map">Открыть карту →</button>
+            <div class="heritage-chart">
+              <span>Следы найдены</span>
+              <strong>12 из 24</strong>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- MUSEUM / PARTNER -->
-      <section class="screen" data-screen="museum">
-        <header class="topbar topbar--back">
-          <button class="back" data-go="artifact">← Назад</button>
-          <span class="topbar__title">Музеи</span>
-        </header>
-        <div class="scroll">
-          <div class="museum-hero">
-            <img src="./images/v667_65.png" alt="" />
-            <div class="museum-hero__content">
-              <h2>Готов увидеть больше?</h2>
-              <p>История продолжается в реальном мире</p>
-            </div>
-          </div>
-
-          <div class="discount">
-            <div>
-              <strong>Скидка 10% на билет</strong>
-              <p>Покажите экран на кассе музея</p>
-            </div>
-            <div class="qr-grid">
-              <img src="./images/v668_101.png" alt="" />
-              <img src="./images/v785_193.png" alt="" />
-              <img src="./images/v785_195.png" alt="" />
-              <img src="./images/v785_197.png" alt="" />
-            </div>
-          </div>
-
-          <div class="panel">
-            <h3>История продолжается в музее</h3>
-            <p class="muted" id="museumName">Музей изобразительных искусств Республики Татарстан</p>
-            <p class="muted" id="museumMeta">Зал 3 · ~12 мин</p>
-            <button class="btn btn--primary" data-toast="Маршрут построен">Построить маршрут →</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROFILE -->
-      <section class="screen" data-screen="profile">
-        <header class="topbar topbar--back">
-          <button class="back" data-go="home">← Назад</button>
-          <span class="topbar__title">Профиль</span>
-        </header>
-        <div class="scroll">
-          <div class="profile-card">
-            <img src="./images/v654_208.png" alt="" class="profile-card__avatar" />
-            <div>
-              <h2>Валерия</h2>
-              <p>Исследователь · 9 артефактов</p>
-            </div>
-          </div>
-          <div class="list-links">
-            <button data-go="collection">Моя коллекция →</button>
-            <button data-go="family">Семейный режим →</button>
-            <button data-go="map">Моя карта →</button>
-            <button data-go="museum">Предложения партнёров →</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- BOTTOM NAV -->
-      <nav class="bottomnav" id="bottomnav">
-        <button class="bottomnav__item is-active" data-go="home">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5z"/></svg>
-          <span>Главная</span>
-        </button>
-        <button class="bottomnav__item" data-go="folklore">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
-          <span>Культура</span>
-        </button>
-        <button class="bottomnav__item" data-go="map">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>
-          <span>Карта</span>
-        </button>
-        <button class="bottomnav__item" data-go="collection">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          <span>Коллекция</span>
-        </button>
-      </nav>
-
-      <div class="toast" id="toast" hidden></div>
     </div>
   </div>
 
