@@ -3,7 +3,7 @@
     tatarstan: {
       name: "Татарстан",
       desc: "Земля орнаментов, преданий и древних символов",
-      image: "./images/v651_122.png",
+      image: ".images/mechet-kul-sharif.jpg",
       found: "2 артефакта открыто",
     },
     yakutia: {
@@ -27,7 +27,7 @@
     uzbekistan: {
       name: "Узбекистан",
       desc: "Голубые купола, керамика и шёлковый путь",
-      image: "./images/v651_130.png",
+      image: "./images/148.jpg",
       found: "След ещё не найден",
     },
   };
