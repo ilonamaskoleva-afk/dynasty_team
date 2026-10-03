@@ -27,7 +27,7 @@
         <header class="topbar">
           <nav class="topnav">
             <button class="topnav__link is-active" data-go="home">Главная</button>
-            <button class="topnav__link" data-go="folklore">Культура</button>
+            <button class="topnav__link" onclick="window.location.href='cultures.html'">Культура</button>
             <button class="topnav__link" data-go="map">Карта</button>
             <button class="topnav__link" data-go="profile">Профиль</button>
           </nav>
@@ -72,7 +72,7 @@
               <span class="culture-card__label">Узбекистан</span>
               <span class="culture-card__arrow">→</span>
             </button>
-            <button class="culture-card culture-card--all" data-go="folklore">
+            <button class="culture-card culture-card--all" onclick="window.location.href='cultures.html'">
               <img class="culture-card__icon" src="./images/v654_188.png" alt="" />
               <span class="culture-card__all-label">Все культуры</span>
             </button>
@@ -86,11 +86,11 @@
             <img class="map-teaser__img" src="./images/v654_200.png" alt="Карта" />
           </div>
 
-          <div class="block block--dark">
+          <div class="block block--dark" onclick="window.location.href='stories.html'">
             <div class="block__copy">
               <h3>Фольклор народов России</h3>
               <p>сказки, легенды, мультфильмы, рассказы</p>
-              <button class="btn btn--ghost btn--sm" data-go="folklore">Смотреть →</button>
+              <button class="btn btn--ghost btn--sm">Смотреть →</button>
             </div>
             <img class="block__art" src="./images/v806_39.png" alt="" />
           </div>
@@ -226,254 +226,6 @@
         </div>
       </section>
 
-      <!-- FOLKLORE -->
-      <section class="screen" data-screen="folklore">
-        <header class="topbar topbar--back">
-          <button class="back" data-go="home">← Назад</button>
-          <span class="topbar__title">Фольклор народов России</span>
-        </header>
-        <div class="scroll">
-          <div class="folk-hero">
-            <h2>Фольклор народов России</h2>
-            <p>Сказки, легенды, мультфильмы, рассказы — общий код многих культур</p>
-            <div class="tabs" id="folkTabs">
-              <button class="tab is-active" data-tab="cartoons">Мультфильмы</button>
-              <button class="tab" data-tab="stories">Истории</button>
-              <button class="tab" data-tab="heroes">Герои и эпосы</button>
-            </div>
-          </div>
-
-          <div id="folkPanels">
-            <!-- CARTOONS PANEL -->
-            <div class="folk-panel" data-panel="cartoons">
-              <div class="panel">
-                <h3>«Гора самоцветов»</h3>
-                <p class="muted">Легендарный цикл по сказкам народов России и ближнего зарубежья</p>
-                <ul class="folk-list">
-                  <li><strong>Куйгорож</strong> — мордовская</li>
-                  <li><strong>Кот и лиса</strong> — русская</li>
-                  <li><strong>Про ворона</strong> — чукотская</li>
-                  <li><strong>Толкование снов</strong> — татарская</li>
-                </ul>
-              </div>
-              <div class="panel">
-                <h3>Ещё серии и фильмы</h3>
-                <ul class="folk-list">
-                  <li>«Мульт-Россия» — сказки разных регионов</li>
-                  <li>«Сказки народов Севера» — чукчи, ненцы, ханты</li>
-                  <li>«Сармако» — бурятская сказка</li>
-                  <li>«Хозяйка Медной горы» — сказы Бажова</li>
-                  <li>«Алдар-Косе» — казахская</li>
-                  <li>«Джангар» — калмыцкий эпос</li>
-                  <li>«Нюргун Боотур» — якутский эпос</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- STORIES PANEL -->
-            <div class="folk-panel" data-panel="stories" hidden>
-              <div class="panel">
-                <h3>Что почитать или послушать</h3>
-                <ul class="folk-list">
-                  <li>«Сказки народов России»</li>
-                  <li>«Сказки народов Севера»</li>
-                  <li>«Сказки народов Поволжья»</li>
-                  <li>«Легенды и сказки народов Кавказа»</li>
-                  <li>«Мифы и легенды народов мира» — разделы про народы России</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- HEROES PANEL -->
-            <div class="folk-panel" data-panel="heroes" hidden>
-              <div class="panel">
-                <h3>Персонажи и эпосы</h3>
-                <ul class="folk-list folk-list--dense">
-                  <li><strong>Русские:</strong> Илья Муромец, Добрыня, Алёша, Василиса, Баба-Яга</li>
-                  <li><strong>Татарские:</strong> Шурале, Су анасы, Камыр-батыр, Алтынчәч</li>
-                  <li><strong>Башкирские:</strong> Урал-батыр, Акбузат, Шульген</li>
-                  <li><strong>Бурятские:</strong> Гэсэр; Байкал и Ангара</li>
-                  <li><strong>Якутские:</strong> Нюргун Боотур, олонхо</li>
-                  <li><strong>Калмыцкие:</strong> Джангар</li>
-                  <li><strong>Карельские:</strong> Калевала</li>
-                  <li><strong>Дагестанские:</strong> Хочбар, легенды про орлов и горы</li>
-                </ul>
-              </div>
-              <div class="culture-jump">
-                <p class="create__label">Перейти к региону</p>
-                <div class="motif-chips">
-                  <button class="chip" data-go="culture" data-culture="tatarstan">Татарстан</button>
-                  <button class="chip" data-go="culture" data-culture="yakutia">Якутия</button>
-                  <button class="chip" data-go="culture" data-culture="pomorye">Поморье</button>
-                  <button class="chip" data-go="culture" data-culture="kazakhstan">Казахстан</button>
-                  <button class="chip" data-go="culture" data-culture="uzbekistan">Узбекистан</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="search-bar">
-            <input type="text" placeholder="Например: Шурале, олонхо, вышивка..." id="artifactSearch" />
-            <button class="btn btn--primary btn--sm" id="findBtn">Найти</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- MYTH -->
-      <section class="screen" data-screen="myth">
-        <header class="topbar topbar--back">
-          <button class="back" data-go="culture">← Назад</button>
-          <span class="topbar__title" id="mythScreenTitle">Миф</span>
-        </header>
-        <div class="scroll">
-          <div class="myth-hero">
-            <img src="./images/tatar_shurale.jpg" alt="" id="mythImg" />
-            <div>
-              <h2 id="mythName">Шурале</h2>
-              <p id="mythSub">Лесной дух татарского фольклора</p>
-            </div>
-          </div>
-
-          <div class="myth-tabs" id="mythTabs">
-            <button class="myth-tab is-active" data-myth="story">История</button>
-            <button class="myth-tab" data-myth="facts">Факты</button>
-            <button class="myth-tab" data-myth="essence">Суть</button>
-          </div>
-
-          <article class="myth-body" id="mythBody">
-            <p></p>
-          </article>
-
-          <button class="btn btn--primary" data-go="artifact" style="margin: 16px 20px 20px;">Связанный артефакт →</button>
-        </div>
-      </section>
-
-      <!-- ARTIFACT -->
-      <section class="screen" data-screen="artifact">
-        <header class="topbar topbar--back">
-          <button class="back" data-go="culture">← Назад</button>
-          <span class="topbar__title">Артефакт</span>
-        </header>
-        <div class="scroll artifact-screen">
-          <div class="artifact-banner">
-            <div class="artifact-banner__text">
-              <small id="artLabel">Ты нашел след</small>
-              <h2 id="artTitle">Татарский орнамент</h2>
-              <p id="artText"></p>
-              <div class="actions-row">
-                <button class="btn btn--ghost btn--sm" data-go="museum">Где увидеть?</button>
-                <button class="btn btn--primary btn--sm" data-collect>Открыть артефакт →</button>
-              </div>
-            </div>
-            <img src="./images/v666_45.png" alt="" id="artImg" />
-          </div>
-          <button class="btn btn--outline full" data-go="museum">ПЕРЕЙТИ К МУЗЕЯМ →</button>
-        </div>
-      </section>
-
-      <!-- COLLECTION / CREATE -->
-      <section class="screen" data-screen="collection">
-        <header class="topbar topbar--back">
-          <button class="back" data-go="home">← Назад</button>
-          <span class="topbar__title">Моя коллекция</span>
-        </header>
-        <div class="scroll">
-          <div class="collection-head">
-            <span class="badge">8 предметов</span>
-            <span class="badge badge--dark" id="confirmBadge">2/8 подтверждено!</span>
-          </div>
-
-          <div class="collection-grid" id="collectionGrid">
-            <div class="c-item unlocked"><img src="./images/v737_94.png" alt="" /><img src="./images/v713_60.png" alt="" /></div>
-            <div class="c-item unlocked"><img src="./images/v736_75.png" alt="" /></div>
-            <div class="c-item unlocked"><img src="./images/v668_87.png" alt="" /></div>
-            <div class="c-item"><img src="./images/v737_96.png" alt="" /></div>
-            <div class="c-item"><img src="./images/v735_74.png" alt="" /></div>
-            <div class="c-item more"><span>Смотреть</span><strong>+3</strong></div>
-          </div>
-
-          <div class="create">
-            <div class="create__head">
-              <h3>Мастерская наследия</h3>
-              <p>Собери новый смысл из следов, которые уже открыл: орнамент + миф + стиль → своя история</p>
-            </div>
-
-            <div class="step">
-              <div class="step__num">1</div>
-              <div class="step__body">
-                <p class="create__label">Формат</p>
-                <div class="format-list" id="createActions">
-                  <button class="format is-selected" data-action="postcard">
-                    <strong>Открытка</strong>
-                    <span>Короткая история с орнаментом — можно отправить близким</span>
-                  </button>
-                  <button class="format" data-action="revive">
-                    <strong>Оживление</strong>
-                    <span>Миф или обряд оживает как сцена: кто, где, зачем</span>
-                  </button>
-                  <button class="format" data-action="visual">
-                    <strong>Узор</strong>
-                    <span>Новый визуальный код из символов разных культур</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step__num">2</div>
-              <div class="step__body">
-                <p class="create__label">Следы для смешения</p>
-                <div class="motif-chips" id="motifs">
-                  <button class="chip is-selected" data-motif="ornament">Татарский орнамент</button>
-                  <button class="chip is-selected" data-motif="leshii">Миф о Лешем</button>
-                  <button class="chip" data-motif="pomor">Поморская вышивка</button>
-                  <button class="chip" data-motif="yakut">Якутский эпос</button>
-                  <button class="chip" data-motif="dome">Голубые купола</button>
-                </div>
-                <p class="create__hint">Выбери 2–3 следа — так история получается живее</p>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step__num">3</div>
-              <div class="step__body">
-                <p class="create__label">Стиль</p>
-                <div class="styles" id="styles">
-                  <button class="style is-selected" data-style="ancient">Древний</button>
-                  <button class="style" data-style="modern">Современный</button>
-                  <button class="style" data-style="minimal">Минимализм</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step__num">4</div>
-              <div class="step__body">
-                <p class="create__label">Твоя идея</p>
-                <label class="field">
-                  <textarea id="genPrompt" rows="3" placeholder="Например: открытка для бабушки — лесной дух бережёт дом, вокруг татарских орнаментов..."></textarea>
-                </label>
-              </div>
-            </div>
-
-            <button class="btn btn--primary create__go" id="generateBtn">Собрать историю →</button>
-
-            <div class="gen-result" id="genResult" hidden>
-              <div class="gen-result__tag" id="genTag">Открытка · Древний</div>
-              <h4 id="genTitle">След, который ты собрал</h4>
-              <p id="genText"></p>
-              <div class="gen-result__motifs" id="genMotifs"></div>
-              <div class="gen-result__actions">
-                <button class="btn btn--outline btn--sm" data-toast="Сохранено в коллекцию">В коллекцию</button>
-                <button class="btn btn--primary btn--sm" data-go="museum">К музею →</button>
-              </div>
-            </div>
-
-            <a class="partner-link" data-go="museum">Где увидеть похожее вживую · Музеи</a>
-          </div>
-        </div>
-      </section>
-
       <!-- FAMILY -->
       <section class="screen" data-screen="family">
         <header class="topbar topbar--back">
@@ -499,15 +251,56 @@
               <button class="avatar-add" data-toast="Приглашение отправлено">+</button>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="heritage-card">
-            <div class="heritage-card__head">
-              <h3>Наследие</h3>
-              <p>Твой путь открытий</p>
+      <!-- ARTIFACT -->
+      <section class="screen" data-screen="artifact">
+        <header class="topbar topbar--back">
+          <button class="back" data-go="culture">← Назад</button>
+          <span class="topbar__title">Артефакт</span>
+        </header>
+        <div class="scroll artifact-screen">
+          <div class="artifact-banner">
+            <div class="artifact-banner__text">
+              <small id="artLabel">Ты нашел след</small>
+              <h2 id="artTitle">Татарский орнамент</h2>
+              <p id="artText">Древний язык символов</p>
             </div>
-            <div class="heritage-chart">
-              <span>Следы найдены</span>
-              <strong>12 из 24</strong>
+            <img src="./images/v666_45.png" alt="" id="artImg" />
+          </div>
+        </div>
+      </section>
+
+      <!-- MYTH -->
+      <section class="screen" data-screen="myth">
+        <header class="topbar topbar--back">
+          <button class="back" data-go="culture">← Назад</button>
+          <span class="topbar__title">Миф</span>
+        </header>
+        <div class="scroll">
+          <div class="myth-hero">
+            <img src="./images/tatar_shurale.jpg" alt="" id="mythImg" />
+            <div>
+              <h2 id="mythName">Шурале</h2>
+              <p id="mythSub">Лесной дух татарского фольклора</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFILE -->
+      <section class="screen" data-screen="profile">
+        <header class="topbar topbar--back">
+          <button class="back" data-go="home">← Назад</button>
+          <span class="topbar__title">Профиль</span>
+        </header>
+        <div class="scroll">
+          <div class="profile-card">
+            <img src="./images/v654_208.png" alt="" class="profile-card__avatar" />
+            <div>
+              <h2>Валерия</h2>
+              <p>Исследователь · 9 артефактов</p>
             </div>
           </div>
         </div>
