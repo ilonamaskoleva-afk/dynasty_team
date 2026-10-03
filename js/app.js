@@ -3,7 +3,7 @@
     tatarstan: {
       name: "Татарстан",
       desc: "Земля орнаментов, преданий и древних символов",
-      image: ".images/mechet-kul-sharif.jpg",
+      image: "./images/mechet-kul-sharif.jpg",
       found: "2 артефакта открыто",
     },
     yakutia: {
@@ -33,12 +33,9 @@
   };
 
   const mythTexts = {
-    story:
-      "Леший — хозяин леса. Он может казаться высоким, как дерево, или крошечным, как травинка. Путников он сбивает с пути и водит кругами. Но если уважать лес и его обитателей, Леший не враг.",
-    facts:
-      "Лешего часто изображают с бородой из мха и ветвями вместо волос. Ему оставляли подношения на опушке: хлеб, молоко, блины. Считалось, что Леший охраняет зверей и растения.",
-    essence:
-      "Суть мифа — уважение к природе. Лес живой, у него есть хозяин, и человек — гость. Артефакты с растительными мотивами часто связаны с этой верой.",
+    story: "Леший — хозяин леса. Он может казаться высоким, как дерево, или крошечным, как травинка. Путников он сбивает с пути, но часто помогает тем, кто уважительно относится к природе.",
+    facts: "Лешего часто изображают с бородой из мха и ветвями вместо волос. Ему оставляли подношения на опушке: хлеб, соль, кусочки ткани или сено.",
+    essence: "Суть мифа — уважение к природе. Лес живой, у него есть хозяин, и человек — гость. Артефакты с растительными символами напоминают, что мы часть природы, а не её хозяева.",
   };
 
   const app = document.getElementById("app");
@@ -77,9 +74,7 @@
 
   function go(screen, opts = {}) {
     const target = app?.querySelector(`[data-screen="${screen}"]`);
-    if (!target) {
-      return;
-    }
+    if (!target) return;
 
     if (opts.culture) setCulture(opts.culture);
 
@@ -221,15 +216,9 @@
   };
 
   const storyTemplates = {
-    postcard: (motifs, style, idea) =>
-      idea ||
-      `Ты собрал ${motifs.join(", ").toLowerCase()} в формате открытки. В стиле «${style}» они звучат как короткое пожелание: береги традиции и помни о корнях.`,
-    revive: (motifs, style, idea) =>
-      idea ||
-      `Сцена ожила: ${motifs.join(" + ")}. В стиле «${style}» прошлое не музейная витрина, а живой момент — ты внутри предания, слышишь голоса предков.`,
-    visual: (motifs, style, idea) =>
-      idea ||
-      `Новый визуальный код из ${motifs.join(", ").toLowerCase()}. Стиль «${style}» связывает разные культуры в один узнаваемый знак наследия.`,
+    postcard: (motifs, style, idea) => idea || `Ты собрал ${motifs.join(", ").toLowerCase()} в формате открытки. В стиле «${style}» они звучат как короткое пожелание: береги память и наследие.`,
+    revive: (motifs, style, idea) => idea || `Сцена ожила: ${motifs.join(" + ")}. В стиле «${style}» прошлое не музейная витрина, а живой момент — ты внутри преданий.`,
+    visual: (motifs, style, idea) => idea || `Новый визуальный код из ${motifs.join(", ").toLowerCase()}. Стиль «${style}» связывает разные культуры в один узнаваемый узор.`,
   };
 
   document.getElementById("generateBtn")?.addEventListener("click", () => {
@@ -275,5 +264,18 @@
     setTimeout(() => go("artifact"), 800);
   });
 
-  go("splash");
+  const hash = (location.hash || "").replace("#", "").trim();
+  const routeMap = {
+    folklore: "folklore",
+    stories: "folklore",
+    culture: "culture",
+    map: "map",
+    collection: "collection",
+    myth: "myth",
+    museum: "museum",
+    home: "home",
+    splash: "splash",
+  };
+
+  go(routeMap[hash] || "splash");
 })();
