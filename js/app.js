@@ -173,18 +173,16 @@
     document.getElementById("mythBody").innerHTML = `<p>${mythTexts[key]}</p>`;
   });
 
-  // Folklore tabs
+  // Folklore tabs: переключают блоки-панели
   document.getElementById("folkTabs")?.addEventListener("click", (e) => {
     const tab = e.target.closest(".tab");
     if (!tab) return;
+    const key = tab.getAttribute("data-tab");
     document.querySelectorAll("#folkTabs .tab").forEach((t) => t.classList.remove("is-active"));
     tab.classList.add("is-active");
-    const labels = {
-      myths: "Раздел мифологии открыт",
-      stories: "Раздел рассказов открыт",
-      cartoons: "Раздел мультфильмов открыт",
-    };
-    showToast(labels[tab.getAttribute("data-tab")] || "Раздел открыт");
+    document.querySelectorAll("#folkPanels .folk-panel").forEach((p) => {
+      p.hidden = p.getAttribute("data-panel") !== key;
+    });
   });
 
   // Create workshop
